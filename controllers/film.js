@@ -155,7 +155,11 @@ const updatefilmById = (req, res) => {
           error: err,
         });
       }
-      return res.status(200).json(result);
+      return res.status(200).json({
+        status: "Successfully Updated",
+        statusCode: 200,
+        content: result,
+      });
     });
   });
 };
@@ -164,13 +168,13 @@ const removefilmById = (req, res) => {
   film.remove((err, deletedProduct) => {
     if (err) {
       return res.status(400).json({
-        error: "Productn is Not Found",
+        error: "Film is Not Found",
       });
     }
     return res.status(200).json({
-      status: "Successfully Deleted the Product",
+      status: "Successfully Deleted the Film",
       statusCode: 200,
-      content: req.film,
+      content: deletedProduct,
     });
   });
 };

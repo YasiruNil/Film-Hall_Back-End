@@ -52,7 +52,9 @@ const deleteCategory = (req, res) => {
         error: "category delete failed",
       });
     }
-    return res.status(200).json({
+    res.status(200).json({
+      status: "Category successfully Deleted",
+      statusCode: 200,
       message: "Category successfully Deleted",
     });
   });
@@ -66,7 +68,11 @@ const updateCategory = (req, res) => {
         error: "category update failed",
       });
     }
-    res.json(data);
+    return res.status(200).json({
+      status: "Successfully updated the category",
+      statusCode: 200,
+      content: data,
+    });
   });
 };
 
